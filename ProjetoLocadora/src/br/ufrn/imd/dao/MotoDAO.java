@@ -34,4 +34,5 @@ public class MotoDAO {
 				.filter(m -> m.getPlaca().equals(placa) && m.getMarca().equals(marca))
 				.findFirst();
 		return moto_encontrada.orElse(null);
+	}
 }
