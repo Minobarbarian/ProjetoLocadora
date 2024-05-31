@@ -25,21 +25,21 @@ public class AdminDAO {
 	}
 	
 	//CREATE
-	public void addAdmin(Admin a) {
+	public void criarAdmin(Admin admin) {
 		String sql = "INSERT INTO Admins (cargo, supervisor, departamento) VALUES (?, ?, ?)";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
-			statement.setString(1, a.getCargo());
-			statement.setString(2, a.getSupervisor());
-			statement.setString(3, a.getDepartamento());
+			statement.setString(1, admin.getCargo());
+			statement.setString(2, admin.getSupervisor());
+			statement.setString(3, admin.getDepartamento());
 			statement.executeUpdate();
-			System.out.println("Administrador "+a.getNome()+" inserido!!!");
+			System.out.println("Administrador "+admin.getNome()+" inserido!!!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
 	//READ
-	public Admin getAdmin(String login, String senha) {
+	public Admin pegarAdmin(String login, String senha) {
 		String sql = "SELECT * FROM Admins WHERE login = ? AND senha = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, login);
@@ -62,7 +62,7 @@ public class AdminDAO {
 	}
 	
 	//UPDATE
-	public void updateAdmin(Admin admin) {
+	public void atualizarAdmin(Admin admin) {
 		String sql = "UPDATE Admins SET cargo = ?, supervisor = ?, departamento = ? WHERE login = ?";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, admin.getCargo());
@@ -77,7 +77,7 @@ public class AdminDAO {
 	}
 	
 	//DELETE
-	public void deleteAdmin(Admin admin) {
+	public void deletarAdmin(Admin admin) {
 		String sql = "DELETE FROM Admins WHERE login = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, admin.getLogin());
