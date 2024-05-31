@@ -14,11 +14,11 @@ public class UsuarioDAO {
 	private Connection connection;
 	
 	
-	public UsuarioDAO() throws SQLException {
+	public UsuarioDAO() {
 		connection = Banco_de_Dados.getConnection();
 	}
 	
-	public static UsuarioDAO getInstance() throws SQLException {
+	public static UsuarioDAO getInstance() {
 		if(uDAO == null) {
 			uDAO = new UsuarioDAO();
 		}

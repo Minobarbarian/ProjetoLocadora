@@ -9,7 +9,12 @@ public class Banco_de_Dados {
 	private static final String NOME = "root";
 	private static final String SENHA = "root";
 	
-	public static Connection getConnection() throws SQLException{
-		return DriverManager.getConnection(URL, SENHA, NOME);
+	public static Connection getConnection(){
+		try {
+			return DriverManager.getConnection(URL, SENHA, NOME);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException("Conexão falhou");
+		}
 	}
 }

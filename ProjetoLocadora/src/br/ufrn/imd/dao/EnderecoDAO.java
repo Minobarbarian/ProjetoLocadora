@@ -13,11 +13,11 @@ public class EnderecoDAO {
 	private Connection connection;
 	
 	
-	public EnderecoDAO() throws SQLException {
+	public EnderecoDAO() {
 		connection = Banco_de_Dados.getConnection();
 	}
 	
-	public static EnderecoDAO getInstance() throws SQLException {
+	public static EnderecoDAO getInstance() {
 		if(eDAO == null) {
 			eDAO = new EnderecoDAO();
 		}

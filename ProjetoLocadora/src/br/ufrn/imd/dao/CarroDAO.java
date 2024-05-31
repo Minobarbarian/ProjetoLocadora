@@ -15,11 +15,11 @@ public class CarroDAO {
 	private Connection connection;
 	
 	
-	public CarroDAO() throws SQLException {
+	public CarroDAO() {
 		connection = Banco_de_Dados.getConnection();
 	}
 	
-	public static CarroDAO getInstance() throws SQLException {
+	public static CarroDAO getInstance() {
 		if(cDAO == null) {
 			cDAO = new CarroDAO();
 		}

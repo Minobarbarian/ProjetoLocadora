@@ -13,11 +13,11 @@ public class MotoDAO {
 	private Connection connection;
 	
 	
-	public MotoDAO() throws SQLException {
+	public MotoDAO() {
 		connection = Banco_de_Dados.getConnection();
 	}
 	
-	public static MotoDAO getInstance() throws SQLException {
+	public static MotoDAO getInstance() {
 		if(mDAO == null) {
 			mDAO = new MotoDAO();
 		}

@@ -13,11 +13,11 @@ public class VeiculoDAO {
 	private Connection connection;
 	
 	
-	public VeiculoDAO() throws SQLException {
+	public VeiculoDAO() {
 		connection = Banco_de_Dados.getConnection();
 	}
 	
-	public static VeiculoDAO getInstance() throws SQLException {
+	public static VeiculoDAO getInstance() {
 		if(vDAO == null) {
 			vDAO = new VeiculoDAO();
 		}

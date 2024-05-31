@@ -13,11 +13,11 @@ public class AdminDAO {
 	private Connection connection;
 	
 	
-	public AdminDAO() throws SQLException {
+	public AdminDAO() {
 		connection = Banco_de_Dados.getConnection();
 	}
 	
-	public static AdminDAO getInstance() throws SQLException {
+	public static AdminDAO getInstance() {
 		if(aDAO == null) {
 			aDAO = new AdminDAO();
 		}
