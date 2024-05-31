@@ -5,8 +5,6 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Optional;
 
 import br.ufrn.imd.controle.Banco_de_Dados;
 import br.ufrn.imd.modelo.Usuario;

@@ -1,38 +1,102 @@
 package br.ufrn.imd.dao;
 
-import java.util.ArrayList;
-import java.util.Optional;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import br.ufrn.imd.controle.Banco_de_Dados;
+import br.ufrn.imd.modelo.Carro;
 
 import br.ufrn.imd.modelo.Carro;
 
 public class CarroDAO {
-	private ArrayList<Carro> carros;
 	private static CarroDAO cDAO;
+	private Connection connection;
 	
-	public CarroDAO() {
-		carros = new ArrayList<Carro>();
+	
+	public CarroDAO() throws SQLException {
+		connection = Banco_de_Dados.getConnection();
 	}
 	
-	public static CarroDAO getInstance() {
+	public static CarroDAO getInstance() throws SQLException {
 		if(cDAO == null) {
 			cDAO = new CarroDAO();
 		}
 		return cDAO;
 	}
 	
-	public void addCarro(Carro c) {
-		carros.add(c);
-		System.out.println("Carro "+c.getMarca()+" inserido!!!");
+	//CREATE
+	public void criarCarro(Carro carro) {
+		String sql = "INSERT INTO Carros (IdCarro, IdVeiculo, porta, potencia) VALUES (?, ?, ?, ?)";
+		try (PreparedStatement statement = connection.prepareStatement(sql)) {
+			statement.setInt(1, carro.getId_carro());
+			statement.setInt(2, carro.getId_veiculo());
+			statement.setInt(3, carro.getPortas());
+			statement.setInt(4, carro.getPotencia());
+			statement.executeUpdate();
+			
+			System.out.println("Carro inserido!!!");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
-	public void registrarCarros() {
-		
+	//READ
+	public Carro pegarCarro(String marca, String placa) {
+		String sql = "SELECT * FROM Carros INNER JOIN Veiculos ON Carros.idVeiculo = Veiculos.idVeiculo WHERE Veiculos.marca = ? AND Veiculos.placa = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, marca);
+            statement.setString(2, placa);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                	Carro carro = new Carro();
+                	carro.setId_carro(resultSet.getInt("idCarro"));
+                	carro.setId_veiculo(resultSet.getInt("idVeiculo"));
+                	carro.setPortas(resultSet.getInt("portas"));
+                	carro.setPotencia(resultSet.getInt("potencia"));
+                    
+                    System.out.println("Carro encontrado!!!");
+                    return carro;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Carro não encontrado!!!");
+        return null;
 	}
-
-	public Carro getCarro(String placa, String marca) {
-		Optional<Carro> carro_encontrado = carros.stream()
-				.filter(c -> c.getPlaca().equals(placa) && c.getMarca().equals(marca))
-				.findFirst();
-		return carro_encontrado.orElse(null);
+	
+	//UPDATE
+	public void atualizarCarro(Carro carro) {
+		String sql = "UPDATE Carros SET portas = ?, potencia = ? WHERE idCarro = ?";
+		try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, carro.getPortas());
+            statement.setInt(2, carro.getPotencia());
+            statement.setInt(3, carro.getId_carro());
+            statement.executeUpdate();
+            
+            System.out.println("Carro atualizado!!!");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+	}
+	
+	//DELETE
+	public void deletarCarro(int id_carro) {
+		String sql = "DELETE FROM Carros WHERE idCarro = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setInt(1, id_carro);
+            int rowsDeleted = statement.executeUpdate();
+            
+            System.out.print("Carro");
+            if (rowsDeleted > 0) {
+                System.out.println(" deletado do banco de dados!!!");
+            } else {
+                System.out.println(" não encontrado!!!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 	}
 }
