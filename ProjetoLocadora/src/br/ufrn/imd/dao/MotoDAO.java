@@ -26,12 +26,11 @@ public class MotoDAO {
 	
 	//CREATE
 	public void criarMoto(Moto moto) {
-		String sql = "INSERT INTO Motos (IdMoto, IdVeiculo, cilindradas, partida) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO Motos (IdVeiculo, cilindradas, partida) VALUES (?, ?, ?)";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
-			statement.setInt(1, moto.getId_moto());
-			statement.setInt(2, moto.getId_veiculo());
-			statement.setInt(3, moto.getCilindradas());
-			statement.setString(4, moto.getPartida());
+			statement.setInt(1, moto.getId_veiculo());
+			statement.setInt(2, moto.getCilindradas());
+			statement.setString(3, moto.getPartida());
 			statement.executeUpdate();
 			
 			System.out.println("Moto inserida!!!");

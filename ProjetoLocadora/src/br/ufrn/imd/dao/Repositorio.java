@@ -1,10 +1,160 @@
 package br.ufrn.imd.dao;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
+import java.util.Scanner;
+
 import br.ufrn.imd.modelo.*;
+import br.ufrn.imd.dao.*;
 
 public class Repositorio {
-	private ArrayList<Veiculo> veiculos;
+	private Scanner scanner;
+
+    public Repositorio() {
+        this.scanner = new Scanner(System.in);
+    }
+    
+	public void criar(int opcao) {
+		switch(opcao) {
+		case 1: 
+			System.out.println("Criando Veiculo...");
+			Veiculo v = new Veiculo();
+			
+			System.out.print("Insira a quilometragem: ");
+			v.setQuilometragem(scanner.nextInt());
+			
+			System.out.print("Insira o valor do aluguel: ");
+			v.setValorAluguel(scanner.nextDouble());
+			
+			System.out.print("Insira a marca: ");
+			v.setMarca(scanner.nextLine());
+			
+			System.out.print("Insira a placa: ");
+			v.setPlaca(scanner.nextLine());
+			
+			System.out.print("Insira se é alugado (1) ou não (2): ");
+			v.setAlugado(scanner.nextInt());
+			
+			VeiculoDAO vDAO = new VeiculoDAO();
+			vDAO.criarVeiculo(v);
+			break;
+		case 2: 
+			System.out.println("Criando Carro...");
+			Carro c = new Carro();
+			
+			System.out.print("Insira o id do veiculo vinculado: ");
+			c.setId_veiculo(scanner.nextInt());
+			
+			System.out.print("Insira a quantidade de portas: ");
+			c.setPortas(scanner.nextInt());
+			
+			System.out.print("Insira o valor da potencia do carro: ");
+			c.setPotencia(scanner.nextInt());
+			
+			CarroDAO cDAO = new CarroDAO();
+			cDAO.criarCarro(c);
+			break;
+		case 3: 
+			System.out.println("Criando Moto...");
+			Moto m = new Moto();
+			
+			System.out.print("Insira o id do veiculo vinculado: ");
+			m.setId_veiculo(scanner.nextInt());
+			
+			System.out.print("Insira o número de cilindradas: ");
+			m.setCilindradas(scanner.nextInt());
+			
+			System.out.print("Insira o tipo de partida: ");
+			m.setPartida(scanner.nextLine());
+			
+			MotoDAO mDAO = new MotoDAO();
+			mDAO.criarMoto(m);
+			break;
+		case 4: 
+			System.out.println("Criando Endereço...");
+			Endereco e = new Endereco();
+			
+			System.out.print("Insira a rua: ");
+			e.setRua(scanner.nextLine());
+			
+			System.out.print("Insira o cep: ");
+			e.setCep(scanner.nextLine());
+			
+			System.out.print("Insira a cidade: ");
+			e.setCidade(scanner.nextLine());
+			
+			System.out.print("Insira o estado: ");
+			e.setEstado(scanner.nextLine());
+			
+			EnderecoDAO eDAO = new EnderecoDAO();
+			eDAO.criarEndereco(e);
+			break;
+		case 5: 
+			System.out.println("Criando Usuario...");
+			Usuario u = new Usuario();
+			
+			System.out.print("Insira o id do endereço vinculado: ");
+			u.setId_endereco(scanner.nextInt());
+			
+			System.out.print("Insira o nome: ");
+			u.setNome(scanner.nextLine());
+			
+			System.out.print("Insira o login: ");
+			u.setLogin(scanner.nextLine());
+			
+			System.out.print("Insira a senha: ");
+			u.setSenha(scanner.nextLine());
+			
+			System.out.print("Insira o email: ");
+			u.setEmail(scanner.nextLine());
+			
+			System.out.print("Insira o telefone: ");
+			u.setTelefone(scanner.nextLine());
+			
+			System.out.print("Insira a data de nascimento (yyyy-MM-dd): ");
+			u.setDataNascimento(scanner.nextLine());
+			
+			UsuarioDAO uDAO = new UsuarioDAO();
+			uDAO.criarUsuario(u);
+			break;
+		case 6: 
+			System.out.println("Criando Admin...");
+			Admin a = new Admin();
+			
+			System.out.print("Insira o id do usuario vinculado: ");
+			a.setId_usuario(scanner.nextInt());
+			
+			System.out.print("Insira o nome do cargo: ");
+			a.setCargo(scanner.nextLine());
+			
+			System.out.print("Insira o nome do supervisor: ");
+			a.setSupervisor(scanner.nextLine());
+			
+			System.out.print("Insira o nome do departamento: ");
+			a.setDepartamento(scanner.nextLine());
+			
+			AdminDAO aDAO = new AdminDAO();
+			aDAO.criarAdmin(a);
+			break;
+		default:
+			System.out.println("Opção inválida!");
+		}
+	}
+	
+	public void ler() {
+		
+	}
+	
+	public void escrever() {
+		
+	}
+	
+	public void apagar() {
+		
+	}
+	
+	
+	
+	/*private ArrayList<Veiculo> veiculos;
 	
 	public Repositorio() {
 		veiculos = new ArrayList<Veiculo>();
@@ -87,6 +237,6 @@ public class Repositorio {
 		}
 		System.out.println("Quantidade total de litros de oleo: " + quantidade_total);
 		System.out.println("==============   Fim   ==============");
-	}
+	}*/
 	
 }

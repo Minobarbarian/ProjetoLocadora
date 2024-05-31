@@ -26,11 +26,12 @@ public class AdminDAO {
 	
 	//CREATE
 	public void criarAdmin(Admin admin) {
-		String sql = "INSERT INTO Admins (cargo, supervisor, departamento) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO Admins (idUsuario, cargo, supervisor, departamento) VALUES (?, ?, ?, ?)";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
-			statement.setString(1, admin.getCargo());
-			statement.setString(2, admin.getSupervisor());
-			statement.setString(3, admin.getDepartamento());
+			statement.setInt(1, admin.getId_usuario());
+			statement.setString(2, admin.getCargo());
+			statement.setString(3, admin.getSupervisor());
+			statement.setString(4, admin.getDepartamento());
 			statement.executeUpdate();
 			System.out.println("Administrador "+admin.getNome()+" inserido!!!");
 		} catch (SQLException e) {

@@ -26,14 +26,13 @@ public class VeiculoDAO {
 	
 	//CREATE
 	public void criarVeiculo(Veiculo veiculo) {
-		String sql = "INSERT INTO Veiculos (idVeiculo, quilometragem, valor_aluguel, marca, placa, alugado) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Veiculos (quilometragem, valor_aluguel, marca, placa, alugado) VALUES (?, ?, ?, ?, ?)";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
-			statement.setInt(1, veiculo.getId_veiculo());
-			statement.setInt(2, veiculo.getQuilometragem());
-			statement.setDouble(3, veiculo.getValorAluguel());
-			statement.setString(4, veiculo.getMarca());
-			statement.setString(5, veiculo.getPlaca());
-			statement.setInt(6, veiculo.getAlugado());
+			statement.setInt(1, veiculo.getQuilometragem());
+			statement.setDouble(2, veiculo.getValorAluguel());
+			statement.setString(3, veiculo.getMarca());
+			statement.setString(4, veiculo.getPlaca());
+			statement.setInt(5, veiculo.getAlugado());
 			statement.executeUpdate();
 			
 			System.out.println("Veiculo inserido!!!");

@@ -27,16 +27,15 @@ public class UsuarioDAO {
 	
 	//CREATE
 	public void criarUsuario(Usuario usuario) {
-		String sql = "INSERT INTO Usuarios (idUsuario, idEndereco, nome, login, senha, email, telefone, data_nascimento) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO Usuarios (idEndereco, nome, login, senha, email, telefone, data_nascimento) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
-			statement.setInt(1, usuario.getId_usuario());
-			statement.setInt(2, usuario.getId_endereco());
-			statement.setString(3, usuario.getNome());
-			statement.setString(4, usuario.getLogin());
-			statement.setString(5, usuario.getSenha());
-			statement.setString(6, usuario.getEmail());
-			statement.setString(7, usuario.getTelefone());
-			statement.setDate(8, Date.valueOf(usuario.getDataNascimento()));
+			statement.setInt(1, usuario.getId_endereco());
+			statement.setString(2, usuario.getNome());
+			statement.setString(3, usuario.getLogin());
+			statement.setString(4, usuario.getSenha());
+			statement.setString(5, usuario.getEmail());
+			statement.setString(6, usuario.getTelefone());
+			statement.setDate(7, Date.valueOf(usuario.getDataNascimento()));
 			statement.executeUpdate();
 			
 			System.out.println("Usuario "+usuario.getNome()+" inserido!!!");
