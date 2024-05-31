@@ -1,46 +1,73 @@
 package br.ufrn.imd.modelo;
 
 public class Veiculo {
-	protected boolean alugado;
+	protected int id_veiculo;
+	protected int Quilometragem;
+	protected double valorAluguel;
 	protected String marca;
 	protected String placa;
-	protected double valorAluguel;
-	protected int Quilometragem;
+	protected boolean alugado;
 	
 	public Veiculo() {
 		
 	}
-	
-	public boolean isAlugado() {
-		return alugado;
+
+	public int getId_veiculo() {
+		return id_veiculo;
 	}
-	public String getMarca() {
-		return marca;
-	}
-	public String getPlaca() {
-		return placa;
-	}
-	public double getValorAluguel() {
-		return valorAluguel;
-	}
+
+
 	public int getQuilometragem() {
 		return Quilometragem;
 	}
-	public void setAlugado(boolean alugado) {
-		this.alugado = alugado;
+
+
+	public double getValorAluguel() {
+		return valorAluguel;
 	}
-	public void setMarca(String marca) {
-		this.marca = marca;
+
+
+	public String getMarca() {
+		return marca;
 	}
-	public void setPlaca(String placa) {
-		this.placa = placa;
+
+
+	public String getPlaca() {
+		return placa;
 	}
-	public void setValorAluguel(double valorAluguel) {
-		this.valorAluguel = valorAluguel;
+
+
+	public boolean isAlugado() {
+		return alugado;
 	}
+
+
+	public void setId_veiculo(int id_veiculo) {
+		this.id_veiculo = id_veiculo;
+	}
+
+
 	public void setQuilometragem(int quilometragem) {
 		Quilometragem = quilometragem;
 	}
-	
-	
+
+
+	public void setValorAluguel(double valorAluguel) {
+		this.valorAluguel = valorAluguel;
+	}
+
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+
+	public void setAlugado(boolean alugado) {
+		this.alugado = alugado;
+	}
 }
