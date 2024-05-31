@@ -40,7 +40,7 @@ public class AdminDAO {
 	
 	//READ
 	public Admin pegarAdmin(String login, String senha) {
-		String sql = "SELECT * FROM Admins WHERE login = ? AND senha = ?";
+		String sql = "SELECT * FROM Admins INNER JOIN Usuarios ON Admins.idUsuario = Usuarios.idUsuario WHERE login = ? AND senha = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, login);
             statement.setString(2, senha);
