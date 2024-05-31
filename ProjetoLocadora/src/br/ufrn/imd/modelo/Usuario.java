@@ -3,7 +3,7 @@ package br.ufrn.imd.modelo;
 import java.time.LocalDate;
 
 public class Usuario {
-	protected int idUsuario;
+	protected int id_usuario;
 	protected String nome;
 	protected String login;
 	protected String senha;
@@ -11,8 +11,9 @@ public class Usuario {
 	protected String telefone;
 	protected LocalDate dataNascimento;
 	protected Endereco endereco;
-	public int getIdUsuario() {
-		return idUsuario;
+	
+	public int getId_usuario() {
+		return id_usuario;
 	}
 	public String getNome() {
 		return nome;
@@ -35,8 +36,8 @@ public class Usuario {
 	public Endereco getEndereco() {
 		return endereco;
 	}
-	public void setIdUsuario(int idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setId_usuario(int id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -59,8 +60,6 @@ public class Usuario {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	
-	
 	
 	
 }

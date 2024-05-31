@@ -1,13 +1,13 @@
 package br.ufrn.imd.modelo;
 
 public class Admin extends Usuario{
-	private int id_funcionario;
+	private int id_admin;
 	private String cargo;
 	private String supervisor;
 	private String departamento;
 	
-	public int getId_funcionario() {
-		return id_funcionario;
+	public int getId_admin() {
+		return id_admin;
 	}
 	public String getCargo() {
 		return cargo;
@@ -18,8 +18,8 @@ public class Admin extends Usuario{
 	public String getDepartamento() {
 		return departamento;
 	}
-	public void setId_funcionario(int id_funcionario) {
-		this.id_funcionario = id_funcionario;
+	public void setId_admin(int id_admin) {
+		this.id_admin = id_admin;
 	}
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
@@ -30,5 +30,7 @@ public class Admin extends Usuario{
 	public void setDepartamento(String departamento) {
 		this.departamento = departamento;
 	}
+	
+	
 	
 }
