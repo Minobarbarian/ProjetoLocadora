@@ -1,5 +1,6 @@
 package br.ufrn.imd.modelo;
 
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 
 public class Usuario {
@@ -58,6 +59,11 @@ public class Usuario {
 		this.telefone = telefone;
 	}
 	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+	public void setDataNascimento(String dataNascimentoStr) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr, formatter);
 		this.dataNascimento = dataNascimento;
 	}
 	
