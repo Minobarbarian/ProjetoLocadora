@@ -26,7 +26,7 @@ public class MotoDAO {
 	
 	//CREATE
 	public void criarMoto(Moto moto) {
-		String sql = "INSERT INTO Motos (IdVeiculo, cilindradas, partida) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO motos (IdVeiculo, cilindradas, partida) VALUES (?, ?, ?)";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, moto.getId_veiculo());
 			statement.setInt(2, moto.getCilindradas());
@@ -41,7 +41,7 @@ public class MotoDAO {
 	
 	//READ
 	public Moto pegarMoto(String marca, String placa) {
-		String sql = "SELECT * FROM Motos INNER JOIN Veiculos ON Motos.idVeiculo = Veiculos.idVeiculo WHERE Veiculos.marca = ? AND Veiculos.placa = ?";
+		String sql = "SELECT * FROM motos INNER JOIN veiculos ON motos.idVeiculo = veiculos.idVeiculo WHERE veiculos.marca = ? AND veiculos.placa = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, marca);
             statement.setString(2, placa);
@@ -66,7 +66,7 @@ public class MotoDAO {
 	
 	//UPDATE
 	public void atualizarMoto(Moto moto) {
-		String sql = "UPDATE Motos SET cilindradas = ?, partida = ? WHERE idMoto = ?";
+		String sql = "UPDATE motos SET cilindradas = ?, partida = ? WHERE idMoto = ?";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, moto.getCilindradas());
             statement.setString(2, moto.getPartida());
@@ -81,7 +81,7 @@ public class MotoDAO {
 	
 	//DELETE
 	public void deletarMoto(int id_moto) {
-		String sql = "DELETE FROM Motos WHERE idMoto = ?";
+		String sql = "DELETE FROM motos WHERE idMoto = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id_moto);
             int rowsDeleted = statement.executeUpdate();

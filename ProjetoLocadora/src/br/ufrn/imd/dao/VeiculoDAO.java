@@ -26,7 +26,7 @@ public class VeiculoDAO {
 	
 	//CREATE
 	public void criarVeiculo(Veiculo veiculo) {
-		String sql = "INSERT INTO Veiculos (quilometragem, valor_aluguel, marca, placa, alugado) VALUES (?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO veiculos (quilometragem, valor_aluguel, marca, placa, alugado) VALUES (?, ?, ?, ?, ?)";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, veiculo.getQuilometragem());
 			statement.setDouble(2, veiculo.getValorAluguel());
@@ -43,7 +43,7 @@ public class VeiculoDAO {
 	
 	//READ
 	public Veiculo pegarVeiculo(String marca, String placa) {
-		String sql = "SELECT * FROM Veiculos WHERE login = ? AND senha = ?";
+		String sql = "SELECT * FROM veiculos WHERE login = ? AND senha = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, marca);
             statement.setString(2, placa);
@@ -70,7 +70,7 @@ public class VeiculoDAO {
 	
 	//UPDATE
 	public void atualizarVeiculo(Veiculo veiculo) {
-		String sql = "UPDATE Veiculos SET quilometragem = ?, valor_aluguel = ?, marca = ?, placa = ?, alugado = ? WHERE idVeiculo = ?";
+		String sql = "UPDATE veiculos SET quilometragem = ?, valor_aluguel = ?, marca = ?, placa = ?, alugado = ? WHERE idVeiculo = ?";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, veiculo.getQuilometragem());
             statement.setDouble(2, veiculo.getValorAluguel());
@@ -88,7 +88,7 @@ public class VeiculoDAO {
 	
 	//DELETE
 	public void deletarVeiculo(int id_veiculo) {
-		String sql = "DELETE FROM Veiculos WHERE idVeiculo = ?";
+		String sql = "DELETE FROM veiculos WHERE idVeiculo = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id_veiculo);
             int rowsDeleted = statement.executeUpdate();

@@ -26,7 +26,7 @@ public class EnderecoDAO {
 	
 	//CREATE
 	public void criarEndereco(Endereco end) {
-		String sql = "INSERT INTO Enderecos (rua, cep, cidade, estado) VALUES (?, ?, ?, ?)";
+		String sql = "INSERT INTO enderecos (rua, cep, cidade, estado) VALUES (?, ?, ?, ?)";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setString(1, end.getRua());
 			statement.setString(2, end.getCep());
@@ -41,7 +41,7 @@ public class EnderecoDAO {
 	
 	//READ
 	public Endereco pegarEndereco(String cep, String estado) {
-		String sql = "SELECT * FROM Enderecos WHERE cep = ? AND estado = ?";
+		String sql = "SELECT * FROM enderecos WHERE cep = ? AND estado = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, cep);
             statement.setString(2, estado);
@@ -66,7 +66,7 @@ public class EnderecoDAO {
 	
 	//UPDATE
 	public void atualizarEndereco(Endereco end) {
-		String sql = "UPDATE Enderecos SET rua = ?, cep = ?, cidade = ?, estado = ? WHERE idEndereco = ?";
+		String sql = "UPDATE enderecos SET rua = ?, cep = ?, cidade = ?, estado = ? WHERE idEndereco = ?";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, end.getRua());
             statement.setString(2, end.getCep());
@@ -82,7 +82,7 @@ public class EnderecoDAO {
 	
 	//DELETE
 	public void deletarEndereco(int id_endereco) {
-		String sql = "DELETE FROM Enderecos WHERE idEndereco = ?";
+		String sql = "DELETE FROM enderecos WHERE idEndereco = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id_endereco);
             int rowsDeleted = statement.executeUpdate();

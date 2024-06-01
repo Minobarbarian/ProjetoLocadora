@@ -27,7 +27,7 @@ public class UsuarioDAO {
 	
 	//CREATE
 	public void criarUsuario(Usuario usuario) {
-		String sql = "INSERT INTO Usuarios (idEndereco, nome, login, senha, email, telefone, data_nascimento) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "INSERT INTO usuarios (idEndereco, nome, login, senha, email, telefone, data_nascimento) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, usuario.getId_endereco());
 			statement.setString(2, usuario.getNome());
@@ -46,7 +46,7 @@ public class UsuarioDAO {
 	
 	//READ
 	public Usuario pegarUsuario(String login, String senha) {
-		String sql = "SELECT * FROM Usuarios WHERE login = ? AND senha = ?";
+		String sql = "SELECT * FROM usuarios WHERE login = ? AND senha = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, login);
             statement.setString(2, senha);
@@ -75,7 +75,7 @@ public class UsuarioDAO {
 	
 	//UPDATE
 	public void atualizarUsuario(Usuario usuario) {
-		String sql = "UPDATE Usuarios SET nome = ?, login = ?, senha = ?, email = ?, telefone = ?, data_nascimento = ? WHERE idUsuario = ?";
+		String sql = "UPDATE usuarios SET nome = ?, login = ?, senha = ?, email = ?, telefone = ?, data_nascimento = ? WHERE idUsuario = ?";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, usuario.getNome());
             statement.setString(2, usuario.getLogin());
@@ -94,7 +94,7 @@ public class UsuarioDAO {
 	
 	//DELETE
 	public void deletarUsuario(int id_usuario) {
-		String sql = "DELETE FROM Usuarios WHERE idUsuario = ?";
+		String sql = "DELETE FROM usuarios WHERE idUsuario = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id_usuario);
             int rowsDeleted = statement.executeUpdate();

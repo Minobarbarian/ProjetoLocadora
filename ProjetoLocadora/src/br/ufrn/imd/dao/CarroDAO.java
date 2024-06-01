@@ -28,7 +28,7 @@ public class CarroDAO {
 	
 	//CREATE
 	public void criarCarro(Carro carro) {
-		String sql = "INSERT INTO Carros (IdVeiculo, porta, potencia) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO carros (IdVeiculo, portas, potencia) VALUES (?, ?, ?)";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
 			statement.setInt(1, carro.getId_veiculo());
 			statement.setInt(2, carro.getPortas());
@@ -43,7 +43,7 @@ public class CarroDAO {
 	
 	//READ
 	public Carro pegarCarro(String marca, String placa) {
-		String sql = "SELECT * FROM Carros INNER JOIN Veiculos ON Carros.idVeiculo = Veiculos.idVeiculo WHERE Veiculos.marca = ? AND Veiculos.placa = ?";
+		String sql = "SELECT * FROM carros INNER JOIN veiculos ON carros.idVeiculo = veiculos.idVeiculo WHERE veiculos.marca = ? AND veiculos.placa = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, marca);
             statement.setString(2, placa);
@@ -68,7 +68,7 @@ public class CarroDAO {
 	
 	//UPDATE
 	public void atualizarCarro(Carro carro) {
-		String sql = "UPDATE Carros SET portas = ?, potencia = ? WHERE idCarro = ?";
+		String sql = "UPDATE carros SET portas = ?, potencia = ? WHERE idCarro = ?";
 		try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, carro.getPortas());
             statement.setInt(2, carro.getPotencia());
@@ -83,7 +83,7 @@ public class CarroDAO {
 	
 	//DELETE
 	public void deletarCarro(int id_carro) {
-		String sql = "DELETE FROM Carros WHERE idCarro = ?";
+		String sql = "DELETE FROM carros WHERE idCarro = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id_carro);
             int rowsDeleted = statement.executeUpdate();
