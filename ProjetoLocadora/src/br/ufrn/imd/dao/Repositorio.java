@@ -13,6 +13,24 @@ public class Repositorio {
         this.scanner = new Scanner(System.in);
     }
     
+    public void acao(int op1, int op2) {
+    	switch(op1) {
+    		case 1: 
+    			criar(op2);
+    			break;
+    		case 2: 
+    			ler(op2);
+    			break;
+    		case 3: 
+    			escrever(op2);
+    			break;
+    		case 4: 
+    			apagar(op2);
+    			break;
+    		default: System.out.println("Opção CRUD inválida!");
+		}
+    }
+    
 	public void criar(int opcao) {
 		switch(opcao) {
 		case 1: 
@@ -25,13 +43,14 @@ public class Repositorio {
 			System.out.print("Insira o valor do aluguel: ");
 			v.setValorAluguel(scanner.nextDouble());
 			
+			scanner.nextLine();
 			System.out.print("Insira a marca: ");
 			v.setMarca(scanner.nextLine());
 			
 			System.out.print("Insira a placa: ");
 			v.setPlaca(scanner.nextLine());
 			
-			System.out.print("Insira se é alugado (1) ou não (2): ");
+			System.out.print("Insira se é alugado (1) ou não (0): ");
 			v.setAlugado(scanner.nextInt());
 			
 			VeiculoDAO vDAO = new VeiculoDAO();
@@ -63,6 +82,7 @@ public class Repositorio {
 			System.out.print("Insira o número de cilindradas: ");
 			m.setCilindradas(scanner.nextInt());
 			
+			scanner.nextLine();
 			System.out.print("Insira o tipo de partida: ");
 			m.setPartida(scanner.nextLine());
 			
@@ -95,6 +115,7 @@ public class Repositorio {
 			System.out.print("Insira o id do endereço vinculado: ");
 			u.setId_endereco(scanner.nextInt());
 			
+			scanner.nextLine();
 			System.out.print("Insira o nome: ");
 			u.setNome(scanner.nextLine());
 			
@@ -123,6 +144,7 @@ public class Repositorio {
 			System.out.print("Insira o id do usuario vinculado: ");
 			a.setId_usuario(scanner.nextInt());
 			
+			scanner.nextLine();
 			System.out.print("Insira o nome do cargo: ");
 			a.setCargo(scanner.nextLine());
 			
@@ -136,20 +158,63 @@ public class Repositorio {
 			aDAO.criarAdmin(a);
 			break;
 		default:
-			System.out.println("Opção inválida!");
+			System.out.println("Opção de Criar inválida!");
 		}
 	}
 	
-	public void ler() {
-		
+	public void ler(int opcao) {
+		switch(opcao) {
+		case 1:
+			
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		default: System.out.println("Opção de leitura inválida!");
+		}
 	}
 	
-	public void escrever() {
-		
+	public void escrever(int opcao) {
+		switch(opcao) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		default: System.out.println("Opção de leitura inválida!");
+		}
 	}
 	
-	public void apagar() {
-		
+	public void apagar(int opcao) {
+		switch(opcao) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		default: System.out.println("Opção de leitura inválida!");
+		}
 	}
 	
 	
