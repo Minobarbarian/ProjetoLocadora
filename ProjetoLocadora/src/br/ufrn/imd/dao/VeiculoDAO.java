@@ -43,7 +43,7 @@ public class VeiculoDAO {
 	
 	//READ
 	public Veiculo pegarVeiculo(String marca, String placa) {
-		String sql = "SELECT * FROM veiculos WHERE login = ? AND senha = ?";
+		String sql = "SELECT * FROM veiculos WHERE marca = ? AND placa = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, marca);
             statement.setString(2, placa);
