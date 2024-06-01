@@ -56,10 +56,10 @@ public class UsuarioDAO {
                 	usuario.setId_usuario(resultSet.getInt("idUsuario"));
                 	usuario.setId_endereco(resultSet.getInt("idEndereco"));
                 	usuario.setNome(resultSet.getString("nome"));
-                	usuario.setNome(resultSet.getString("login"));
-                	usuario.setNome(resultSet.getString("senha"));
-                	usuario.setNome(resultSet.getString("email"));
-                	usuario.setNome(resultSet.getString("telefone"));
+                	usuario.setLogin(resultSet.getString("login"));
+                	usuario.setSenha(resultSet.getString("senha"));
+                	usuario.setEmail(resultSet.getString("email"));
+                	usuario.setTelefone(resultSet.getString("telefone"));
         			usuario.setDataNascimento(resultSet.getDate("data_nascimento").toLocalDate());
                 	
                     System.out.println("Usuario " + usuario.getNome() + " encontrado!!!");
