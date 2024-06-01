@@ -163,19 +163,85 @@ public class Repositorio {
 	}
 	
 	public void ler(int opcao) {
+		String marca, placa, cep, estado, login, senha;
 		switch(opcao) {
 		case 1:
+			System.out.println("Lendo Veiculo...");			
 			
+			System.out.print("Insira o nome da marca para busca: ");
+			marca = scanner.nextLine();
+			
+			System.out.print("Insira o nome da placa para busca: ");
+			placa = scanner.nextLine();
+			
+			VeiculoDAO vDAO = new VeiculoDAO();
+			Veiculo v = vDAO.pegarVeiculo(marca, placa);
+			System.out.println("Coletado: "+v.getId_veiculo()+" "+v.getQuilometragem()+" "+v.getAlugado()+" "+v.getMarca()+" "+v.getPlaca()+" "+v.getValorAluguel());
 			break;
 		case 2:
+			System.out.println("Lendo Carro...");			
+			
+			System.out.print("Insira o nome da marca para busca: ");
+			marca = scanner.nextLine();
+			
+			System.out.print("Insira o nome da placa para busca: ");
+			placa = scanner.nextLine();
+			
+			CarroDAO cDAO = new CarroDAO();
+			Carro c = cDAO.pegarCarro(marca, placa);
+			System.out.println("Coletado: "+c.getId_carro()+" "+c.getId_veiculo()+" "+c.getPortas()+" "+c.getPotencia());
 			break;
 		case 3:
+			System.out.println("Lendo Moto...");			
+			
+			System.out.print("Insira o nome da marca para busca: ");
+			marca = scanner.nextLine();
+			
+			System.out.print("Insira o nome da placa para busca: ");
+			placa = scanner.nextLine();
+			
+			MotoDAO mDAO = new MotoDAO();
+			Moto m = mDAO.pegarMoto(marca, placa);
+			System.out.println("Coletado: "+m.getId_moto()+" "+m.getId_veiculo()+" "+m.getCilindradas()+" "+m.getPartida());
 			break;
 		case 4:
+			System.out.println("Lendo Endereço...");			
+			
+			System.out.print("Insira o cep: ");
+			cep = scanner.nextLine();
+			
+			System.out.print("Insira o estado: ");
+			estado = scanner.nextLine();
+			
+			EnderecoDAO eDAO = new EnderecoDAO();
+			Endereco e = eDAO.pegarEndereco(cep, estado);
+			System.out.println("Coletado: "+e.getId_endereco()+" "+e.getRua()+" "+e.getCidade()+" "+e.getEstado()+" "+e.getCep());
 			break;
 		case 5:
+			System.out.println("Lendo Usuário...");			
+			
+			System.out.print("Insira o login: ");
+			login = scanner.nextLine();
+			
+			System.out.print("Insira a senha: ");
+			senha = scanner.nextLine();
+			
+			UsuarioDAO uDAO = new UsuarioDAO();
+			Usuario u = uDAO.pegarUsuario(login, senha);
+			System.out.println("Coletado: "+u.getId_usuario()+" "+u.getId_endereco()+" "+u.getNome()+" "+u.getLogin()+" "+u.getSenha()+" "+u.getEmail()+" "+u.getTelefone()+" "+u.getDataNascimento());
 			break;
 		case 6:
+			System.out.println("Lendo Admin...");			
+			
+			System.out.print("Insira o login: ");
+			login = scanner.nextLine();
+			
+			System.out.print("Insira a senha: ");
+			senha = scanner.nextLine();
+			
+			AdminDAO aDAO = new AdminDAO();
+			Admin a = aDAO.pegarAdmin(login, senha);
+			System.out.println("Coletado: "+a.getId_admin()+" "+a.getId_usuario()+" "+a.getCargo()+" "+a.getSupervisor()+" "+a.getDepartamento());
 			break;
 		default: System.out.println("Opção de leitura inválida!");
 		}
