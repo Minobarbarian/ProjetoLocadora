@@ -1,30 +1,46 @@
 package br.ufrn.imd.visao;
 
+import java.util.Scanner;
+
 import br.ufrn.imd.dao.Repositorio;
 
 public class LocaLisa {
 
 	public static void main(String[] args) {
 		Repositorio rep = new Repositorio();
+		Scanner scanner = new Scanner(System.in);
+		
+		int op1, op2;
+		op1 = 0;
+		
+		while(op1 != -1) {
+			System.out.println("=================");
+			System.out.print("Insira as ações: ");
+			op1 = scanner.nextInt();
+			op2 = scanner.nextInt();
+			if(op1 != -1) rep.acao(op1, op2);
+		}
+		
+		
 		
 		//veiculo1 e veiculo2
-		rep.criar(1);
-		rep.criar(1);
+		//rep.criar(1);
+		//rep.criar(1);
 		
 		//carro1 e moto1
-		rep.criar(2);
-		rep.criar(3);
+		//rep.criar(2);
+		//rep.criar(3);
 		
 		//end1 e end2
-		rep.criar(4);
-		rep.criar(4);
+		//rep.criar(4);
+		//rep.criar(4);
 		
 		//user1 e user 2
-		rep.criar(5);
-		rep.criar(5);
+		//rep.criar(5);
+		//rep.criar(5);
 		
 		//admin1
-		rep.criar(6);
+		//rep.criar(6);
 		
 		
 		/*Carro c = new Carro();
